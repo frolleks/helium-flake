@@ -18,6 +18,52 @@
         let
           pkgs = import nixpkgs { inherit system; };
           source = sources.packages.${system};
+          desktopItem = pkgs.makeDesktopItem {
+            name = "helium";
+            desktopName = "Helium";
+            genericName = "Web Browser";
+            comment = "Access the Internet";
+            icon = "helium";
+            tryExec = "@out@/bin/helium";
+            exec = "@out@/bin/helium %U";
+            terminal = false;
+            startupNotify = true;
+            startupWMClass = "helium";
+            categories = [
+              "Network"
+              "WebBrowser"
+            ];
+            mimeTypes = [
+              "application/pdf"
+              "application/rdf+xml"
+              "application/rss+xml"
+              "application/xhtml+xml"
+              "application/xml"
+              "image/gif"
+              "image/jpeg"
+              "image/png"
+              "image/webp"
+              "text/html"
+              "text/xml"
+              "x-scheme-handler/http"
+              "x-scheme-handler/https"
+            ];
+            keywords = [
+              "browser"
+              "web"
+              "chromium"
+            ];
+            actions = {
+              new-window = {
+                name = "New Window";
+                exec = "@out@/bin/helium";
+              };
+              new-private-window = {
+                name = "New Incognito Window";
+                exec = "@out@/bin/helium --incognito";
+              };
+            };
+          };
         in
         pkgs.stdenv.mkDerivation {
           pname = "helium";
@@ -82,18 +128,21 @@
 
             mkdir -p $out/bin $out/libexec/helium $out/share/applications
             mkdir -p $out/share/icons/hicolor/256x256/apps
+            mkdir -p $out/share/pixmaps
 
             cp -R . $out/libexec/helium
             chmod +x $out/libexec/helium/helium
 
             makeWrapper $out/libexec/helium/helium $out/bin/helium
 
-            install -Dm644 helium.desktop $out/share/applications/helium.desktop
+            install -Dm644 ${desktopItem}/share/applications/helium.desktop \
+              $out/share/applications/helium.desktop
             substituteInPlace $out/share/applications/helium.desktop \
-              --replace-fail "Exec=helium" "Exec=$out/bin/helium"
+              --replace-fail "@out@" "$out"
 
             install -Dm644 product_logo_256.png \
               $out/share/icons/hicolor/256x256/apps/helium.png
+            install -Dm644 product_logo_256.png $out/share/pixmaps/helium.png
 
             runHook postInstall
           '';

@@ -8,7 +8,7 @@ Nix flake for installing the Linux release builds of [Helium](https://github.com
 - `packages.aarch64-linux.helium`
 - `apps.<system>.helium`
 
-The package is built from the upstream release tarballs listed in [`sources.json`](/home/frolleks/flakes/helium-flake/sources.json).
+The package is built from the upstream release tarballs listed in [`sources.json`](sources.json).
 
 ## Install
 

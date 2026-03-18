@@ -1,0 +1,19 @@
+{
+  "version": "0.10.5.1",
+  "packages": {
+    "x86_64-linux": {
+      "url": "https://github.com/imputnet/helium-linux/releases/download/0.10.5.1/helium-0.10.5.1-x86_64_linux.tar.xz",
+      "hash": "sha256-3hOM9PfuwtdTyQUVOzpAydv6LQHGCKlfKm8TZsdJs20=",
+      "signatureUrl": "https://github.com/imputnet/helium-linux/releases/download/0.10.5.1/helium-0.10.5.1-x86_64_linux.tar.xz.asc",
+      "signatureHash": "sha256-viNCWyBASzMHy4OHHH6nMjCX6KrVf2ZZkjLylbzbBok=",
+      "archiveRoot": "helium-0.10.5.1-x86_64_linux"
+    },
+    "aarch64-linux": {
+      "url": "https://github.com/imputnet/helium-linux/releases/download/0.10.5.1/helium-0.10.5.1-arm64_linux.tar.xz",
+      "hash": "sha256-2h5CW+zhzDX9Uw4PlRGbXRMyhb7yJqPe6XkJ7VzzUJI=",
+      "signatureUrl": "https://github.com/imputnet/helium-linux/releases/download/0.10.5.1/helium-0.10.5.1-arm64_linux.tar.xz.asc",
+      "signatureHash": "sha256-IF0jKJOu1wZi+pm4WO8+ul1KVrvSJN0gqZm+CMBLTdA=",
+      "archiveRoot": "helium-0.10.5.1-arm64_linux"
+    }
+  }
+}
